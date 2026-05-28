@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 project(FileManager)
 
 # ЖЕСТКО указываем консоль
@@ -10,6 +10,6 @@ set(MAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_STANDARD 17) #версия с++
 set(CMAKE_CXX_STANDARD_REQUIRED ON) #значит обязательно использовать указанный стандарт
 
-add_executable(${PrName} main.cpp FileManager.cpp FileManagerUI.cpp FileManagerBK.cpp sqlite3.c)
+add_executable(${PrName} src/main.cpp src/FileManager.cpp src/FileManagerUI.cpp src/FileManagerBK.cpp libs/sqlite3.c)
 
-target_include_directories(${PrName} PRIVATE .)
+target_include_directories(${PrName} PRIVATE src libs)

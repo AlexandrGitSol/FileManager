@@ -12,14 +12,13 @@
 #include <locale>
 #include <algorithm>
 #include <iomanip>
-#include "sqlite3.h"
+#include "../libs/sqlite3.h"
 
 #ifdef _WIN64
     #include <windows.h>
 #endif //_WIN64
 
 #include <algorithm>
-using namespace std;
 using namespace std::filesystem;
 
 int callback_for_get_history(void* his, int num, char** vals, char** cols);
@@ -49,32 +48,32 @@ protected:
     Flag renf;
     Flag regf;
     Flag rootf;
-    vector<char> danger_chars;
-    vector<string> avaliable_flags;
+    std::vector<char> danger_chars;
+    std::vector<std::string> avaliable_flags;
 
     bool stop;
 
-    bool is_correct_flags_string(string flags_string);
+    bool is_correct_flags_string(std::string flags_string);
 
-    virtual bool flags_parser(string all_flags);
+    virtual bool flags_parser(std::string all_flags);
 
-    bool del(path path, vector<string>& ext, vector<string>& exeptions, bool first_call = true);
+    bool del(path path, std::vector<std::string>& ext, std::vector<std::string>& exeptions, bool first_call = true);
 
-    bool ren(path path, vector<string>& ext, vector<string>& exeptions, string name, bool first_call = true);
+    bool ren(path path, std::vector<std::string>& ext, std::vector<std::string>& exeptions, std::string name, bool first_call = true);
 
-    bool cre(path path, string name, int count_f, bool first_call = true);
+    bool cre(path path, std::string name, int count_f, bool first_call = true);
 
-    bool checker(string name, vector<string>& del_list);
+    bool checker(std::string name, std::vector<std::string>& del_list);
 
-    bool have_danger_characters(string name);
+    bool have_danger_characters(std::string name);
 
-    virtual vector<path> fin(path path, vector<string>& ext, vector<string>& exeptions);
+    virtual std::vector<path> fin(path path, std::vector<std::string>& ext, std::vector<std::string>& exeptions);
 
-    void helper_fin(path pathv, vector<string>& ext, vector<string>& exeptions, vector<path>& all_paths);
+    void helper_fin(path pathv, std::vector<std::string>& ext, std::vector<std::string>& exeptions, std::vector<path>& all_paths);
 
     bool del_history();
 
-    virtual vector<vector<string>> get_history();
+    virtual std::vector<std::vector<std::string>> get_history();
 
 public:
 
@@ -84,9 +83,9 @@ public:
 
 class FileManagerUI : public FileManager {
 protected:
-    bool flags_parser(string all_flags) override;
-    vector<path> fin(path path, vector<string>& ext, vector<string>& exeptions) override;
-    vector<vector<string>> get_history() override;
+    bool flags_parser(std::string all_flags) override;
+    std::vector<path> fin(path path, std::vector<std::string>& ext, std::vector<std::string>& exeptions) override;
+    std::vector<std::vector<std::string>> get_history() override;
 public:
     void ui_asking();
 };

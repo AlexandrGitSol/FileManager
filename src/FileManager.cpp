@@ -1,4 +1,5 @@
 ﻿#include "FileManager.h"
+using namespace std;
 
 FileManager::FileManager() :
 	stop(false),

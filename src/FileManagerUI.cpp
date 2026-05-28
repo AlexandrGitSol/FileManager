@@ -1,4 +1,5 @@
 ﻿#include "FileManager.h"
+using namespace std;
 
 vector<vector<string>> FileManagerUI::get_history() {
 	vector<vector<string>> history;
